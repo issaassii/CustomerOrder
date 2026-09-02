@@ -1,11 +1,14 @@
-using Microsoft.EntityFrameworkCore;
+using CustomerOrder.Domain.Interfaces;
+using CustomerOrder.Persistence;
 using CustomerOrder.Persistence.Data;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
