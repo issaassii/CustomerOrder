@@ -4,6 +4,7 @@ using CustomerOrder.Persistence;
 using CustomerOrder.Persistence.Data;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
+using Asp.Versioning;
 
 Log.Logger = new LoggerConfiguration()
     .WriteTo.Console()
@@ -22,6 +23,13 @@ try {
     builder.Services.AddScoped<ICustomerService, CustomerService>();
     builder.Services.AddDbContext<AppDbContext>(options =>
         options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+    builder.Services.AddApiVersioning(options =>
+    {
+        options.DefaultApiVersion = new Asp.Versioning.ApiVersion(1, 0);
+        options.AssumeDefaultVersionWhenUnspecified = true;
+        options.ReportApiVersions = true;
+    });
 
     var app = builder.Build();
 
