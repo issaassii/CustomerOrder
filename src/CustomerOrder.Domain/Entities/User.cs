@@ -12,6 +12,6 @@ public class User
     public string Username { get; set; } = string.Empty;
     public string PasswordHash { get; set; } = string.Empty;
     public string Role { get; set; } = string.Empty;
-    public DateTime CreatedDate { get; set; }
-    public bool isActive { get; set; } = true;
+    public DateTime CreatedDate { get; set; } = DateTime.Now;
+    public bool IsActive { get; set; } = true;
 }
