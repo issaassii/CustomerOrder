@@ -15,6 +15,13 @@ public class CustomersController : ControllerBase
         _customerService = customerService;
     }
 
+    [HttpGet]
+    public async Task<ActionResult<IEnumerable<CustomerResponseDto>>> GetAll()
+    {
+        var customers = await _customerService.GetAllAsync();
+        return Ok(customers);
+    }
+
     [HttpGet("{id}")]
     public async Task<IActionResult> GetById(int id)
     {
