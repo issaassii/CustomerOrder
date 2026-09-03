@@ -1,11 +1,13 @@
 using CustomerOrder.Domain.DTOs;
 using CustomerOrder.Domain.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using Asp.Versioning;
 
 namespace CustomerOrder.API.Controllers;
 
 [ApiController]
-[Route("api/v1/[controller]")]
+[ApiVersion("1.0")]
+[Route("api/v{version:apiVersion}/[controller]")]
 public class CustomersController : ControllerBase
 {
     private readonly ICustomerService _customerService;
