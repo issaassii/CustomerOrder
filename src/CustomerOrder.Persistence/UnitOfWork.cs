@@ -12,9 +12,11 @@ public class UnitOfWork : IUnitOfWork
     {
         _context = context;
         Customers = new CustomerRepository(_context);
+        Users = new UserRepository(_context);
     }
 
     public ICustomerRepository Customers { get; }
+    public IUserRepository Users { get; }
 
     public async Task<int> SaveChangesAsync()
     {

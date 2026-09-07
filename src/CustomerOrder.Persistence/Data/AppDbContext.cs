@@ -8,4 +8,5 @@ public class AppDbContext : DbContext {
     }
 
     public DbSet<Customer> Customers => Set<Customer>();
+    public DbSet<User> Users => Set<User>();
 }
