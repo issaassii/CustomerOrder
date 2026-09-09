@@ -13,4 +13,6 @@ public class Customer
     public string? UpdatedBy { get; set; }
     public bool IsActive { get; set; } = true;
     public bool IsDeleted { get; set; } = false;
-} 
+    public ICollection<Order> Orders { get; set; } = new List<Order>();
+
+}
