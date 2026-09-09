@@ -2,10 +2,12 @@ using CustomerOrder.Domain.DTOs;
 using CustomerOrder.Domain.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Asp.Versioning;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CustomerOrder.API.Controllers;
 
 [ApiController]
+[Authorize]
 [ApiVersion("1.0")]
 [Route("api/v{version:apiVersion}/[controller]")]
 public class CustomersController : ControllerBase
@@ -49,6 +51,7 @@ public class CustomersController : ControllerBase
     }
 
     [HttpDelete("{id}")]
+    [Authorize(Policy = "AdminOnly")]
     public async Task<IActionResult> Delete(int id)
     {
         var success = await _customerService.DeleteAsync(id);
