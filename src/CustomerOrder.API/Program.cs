@@ -1,12 +1,15 @@
+using Asp.Versioning;
+using CustomerOrder.API.Validators;
 using CustomerOrder.Business.Services;
 using CustomerOrder.Domain.Interfaces;
 using CustomerOrder.Persistence;
 using CustomerOrder.Persistence.Data;
-using Microsoft.EntityFrameworkCore;
-using Serilog;
-using Asp.Versioning;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Serilog;
 using System.Text;
 
 Log.Logger = new LoggerConfiguration()
@@ -86,6 +89,9 @@ try {
     {
         options.AddPolicy("AdminOnly", policy => policy.RequireRole("Admin"));
     });
+
+    builder.Services.AddFluentValidationAutoValidation();
+    builder.Services.AddValidatorsFromAssemblyContaining<CreateCustomerDtoValidator>();
 
 
 
