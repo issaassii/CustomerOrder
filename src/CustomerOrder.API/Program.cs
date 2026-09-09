@@ -109,6 +109,7 @@ try {
 
         options.RejectionStatusCode = StatusCodes.Status429TooManyRequests;
     });
+    builder.Services.AddScoped<IProductService, ProductService>();
 
     var app = builder.Build();
 
