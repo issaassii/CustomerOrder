@@ -2,6 +2,7 @@ using Asp.Versioning;
 using CustomerOrder.Domain.DTOs;
 using CustomerOrder.Domain.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 
 namespace CustomerOrder.API.Controllers;
 
@@ -18,6 +19,7 @@ public class AuthController : ControllerBase
     }
 
     [HttpPost("login")]
+    [EnableRateLimiting("fixed")]
     public async Task<ActionResult<LoginResponseDto>> Login(LoginDto dto)
     {
         var result = await _authService.LoginAsync(dto);
