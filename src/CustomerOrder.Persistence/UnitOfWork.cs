@@ -1,3 +1,4 @@
+using CustomerOrder.Domain.Entities;
 using CustomerOrder.Domain.Interfaces;
 using CustomerOrder.Persistence.Data;
 using CustomerOrder.Persistence.Repositories;
@@ -13,10 +14,12 @@ public class UnitOfWork : IUnitOfWork
         _context = context;
         Customers = new CustomerRepository(_context);
         Users = new UserRepository(_context);
+        Products = new ProductRepository(_context);
     }
 
     public ICustomerRepository Customers { get; }
     public IUserRepository Users { get; }
+    public IProductRepository Products { get; }
 
     public async Task<int> SaveChangesAsync()
     {
