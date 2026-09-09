@@ -93,7 +93,7 @@ try {
     builder.Services.AddFluentValidationAutoValidation();
     builder.Services.AddValidatorsFromAssemblyContaining<CreateCustomerDtoValidator>();
 
-
+    builder.Services.AddHealthChecks().AddDbContextCheck<AppDbContext>();
 
 
     var app = builder.Build();
@@ -117,7 +117,7 @@ try {
     app.UseAuthentication();
     app.UseAuthorization();
     app.MapControllers();
-
+    app.MapHealthChecks("/health");
     app.Run();
 
 } catch (Exception ex) {
