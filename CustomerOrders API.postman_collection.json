@@ -16,12 +16,10 @@
             {
               "listen": "test",
               "script": {
+                "type": "text/javascript",
                 "exec": [
                   "pm.environment.set(\"authToken\", pm.response.json().token);"
-                ],
-                "type": "text/javascript",
-                "packages": {},
-                "requests": {}
+                ]
               }
             }
           ],
@@ -30,7 +28,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"Admin@123\"\r\n}",
+              "raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"\"\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -60,16 +58,6 @@
         {
           "name": "Get All Customers",
           "request": {
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{authToken}}",
-                  "type": "string"
-                }
-              ]
-            },
             "method": "GET",
             "header": [],
             "url": {
@@ -243,7 +231,15 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": ""
+              "raw": "{{baseUrl}}/api/v1/Products",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "Products"
+              ]
             }
           },
           "response": []
@@ -455,7 +451,7 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/api/v1/Orders/search?customerId&startDate&endDate",
+              "raw": "{{baseUrl}}/api/v1/Orders/search?customerId=&startDate=&endDate=",
               "host": [
                 "{{baseUrl}}"
               ],
