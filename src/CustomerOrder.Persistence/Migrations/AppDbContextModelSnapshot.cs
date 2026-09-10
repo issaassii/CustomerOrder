@@ -66,7 +66,7 @@ namespace CustomerOrder.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Customers");
+                    b.ToTable("Customers", (string)null);
                 });
 
             modelBuilder.Entity("CustomerOrder.Domain.Entities.Order", b =>
@@ -96,7 +96,7 @@ namespace CustomerOrder.Persistence.Migrations
 
                     b.HasIndex("CustomerId");
 
-                    b.ToTable("Orders");
+                    b.ToTable("Orders", (string)null);
                 });
 
             modelBuilder.Entity("CustomerOrder.Domain.Entities.OrderItem", b =>
@@ -125,7 +125,7 @@ namespace CustomerOrder.Persistence.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("OrderItems");
+                    b.ToTable("OrderItems", (string)null);
                 });
 
             modelBuilder.Entity("CustomerOrder.Domain.Entities.Product", b =>
@@ -157,7 +157,7 @@ namespace CustomerOrder.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Products");
+                    b.ToTable("Products", (string)null);
                 });
 
             modelBuilder.Entity("CustomerOrder.Domain.Entities.User", b =>
@@ -188,7 +188,7 @@ namespace CustomerOrder.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", (string)null);
                 });
 
             modelBuilder.Entity("CustomerOrder.Domain.Entities.Order", b =>
