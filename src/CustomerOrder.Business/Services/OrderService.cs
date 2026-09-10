@@ -87,4 +87,13 @@ public class OrderService : IOrderService
             }).ToList()
         };
     }
+    public async Task<CustomerOrderSummaryDto?> GetCustomerOrderSummaryAsync(int customerId)
+    {
+        return await _unitOfWork.OrderReports.GetCustomerOrderSummaryAsync(customerId);
+    }
+
+    public async Task<IEnumerable<OrderResponseDto>> SearchOrdersAsync(int? customerId, DateTime? startDate, DateTime? endDate)
+    {
+        return await _unitOfWork.OrderReports.SearchOrdersAsync(customerId, startDate, endDate);
+    }
 }

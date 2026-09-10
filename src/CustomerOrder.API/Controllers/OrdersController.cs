@@ -35,4 +35,20 @@ public class OrdersController : ControllerBase
         var created = await _orderService.CreateOrderAsync(dto);
         return CreatedAtAction(nameof(GetById), new { id = created.Id }, created);
     }
+
+    [HttpGet("summary/{customerId}")]
+    public async Task<ActionResult<CustomerOrderSummaryDto>> GetCustomerSummary(int customerId)
+    {
+        var summary = await _orderService.GetCustomerOrderSummaryAsync(customerId);
+        if (summary == null) return NotFound();
+
+        return Ok(summary);
+    }
+
+    [HttpGet("search")]
+    public async Task<ActionResult<IEnumerable<OrderResponseDto>>> Search(int? customerId, DateTime? startDate, DateTime? endDate)
+    {
+        var results = await _orderService.SearchOrdersAsync(customerId, startDate, endDate);
+        return Ok(results);
+    }
 }

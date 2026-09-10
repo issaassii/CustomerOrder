@@ -1,4 +1,4 @@
-namespace CustomerOrder.Domain.Interfaces;
+using CustomerOrder.Domain.Interfaces;
 
 public interface IUnitOfWork : IAsyncDisposable
 {
@@ -6,6 +6,7 @@ public interface IUnitOfWork : IAsyncDisposable
     IUserRepository Users { get; }
     IProductRepository Products { get; }
     IOrderRepository Orders { get; }
+    IOrderReportsRepository OrderReports { get; }
     Task<int> SaveChangesAsync();
     Task BeginTransactionAsync();
     Task CommitTransactionAsync();

@@ -17,12 +17,14 @@ public class UnitOfWork : IUnitOfWork
         Users = new UserRepository(_context);
         Products = new ProductRepository(_context);
         Orders = new OrderRepository(_context);
+        OrderReports = new OrderReportsRepository(_context);
     }
 
     public ICustomerRepository Customers { get; }
     public IUserRepository Users { get; }
     public IProductRepository Products { get; }
     public IOrderRepository Orders { get; }
+    public IOrderReportsRepository OrderReports { get; }
 
     public async Task<int> SaveChangesAsync()
     {
