@@ -4,5 +4,5 @@ namespace CustomerOrder.Domain.Interfaces;
 
 public interface IAuthService
 {
-    Task<LoginResponseDto> LoginAsync(LoginDto dto);
+    Task<LoginResponseDto?> LoginAsync(LoginDto dto);
 }
