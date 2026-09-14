@@ -78,13 +78,7 @@
           "name": "Get Customer by ID",
           "request": {
             "method": "GET",
-            "header": [
-              {
-                "key": "",
-                "value": "",
-                "disabled": true
-              }
-            ],
+            "header": [],
             "url": {
               "raw": "{{baseUrl}}/api/v1/Customers/:userID",
               "host": [
@@ -106,25 +100,8 @@
               "variable": [
                 {
                   "key": "userID",
-                  "value": "2"
+                  "value": "1"
                 }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Health Check",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{baseUrl}}/health",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "health"
               ]
             }
           },
@@ -326,7 +303,7 @@
               "variable": [
                 {
                   "key": "productID",
-                  "value": ""
+                  "value": "1"
                 }
               ]
             }
@@ -352,7 +329,7 @@
               "variable": [
                 {
                   "key": "productID",
-                  "value": ""
+                  "value": "4"
                 }
               ]
             }
@@ -451,7 +428,7 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/api/v1/Orders/search?customerId=&startDate=&endDate=",
+              "raw": "{{baseUrl}}/api/v1/Orders/search?customerId=1&startDate=&endDate=",
               "host": [
                 "{{baseUrl}}"
               ],
@@ -464,7 +441,7 @@
               "query": [
                 {
                   "key": "customerId",
-                  "value": ""
+                  "value": "1"
                 },
                 {
                   "key": "startDate",
@@ -474,6 +451,28 @@
                   "key": "endDate",
                   "value": ""
                 }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "System",
+      "item": [
+        {
+          "name": "Health Check",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/health",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "health"
               ]
             }
           },
