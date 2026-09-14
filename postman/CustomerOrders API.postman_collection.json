@@ -16,12 +16,10 @@
             {
               "listen": "test",
               "script": {
+                "type": "text/javascript",
                 "exec": [
                   "pm.environment.set(\"authToken\", pm.response.json().token);"
-                ],
-                "type": "text/javascript",
-                "packages": {},
-                "requests": {}
+                ]
               }
             }
           ],
@@ -30,7 +28,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"Admin@123\"\r\n}",
+              "raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"\"\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -60,16 +58,6 @@
         {
           "name": "Get All Customers",
           "request": {
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{authToken}}",
-                  "type": "string"
-                }
-              ]
-            },
             "method": "GET",
             "header": [],
             "url": {
@@ -90,13 +78,7 @@
           "name": "Get Customer by ID",
           "request": {
             "method": "GET",
-            "header": [
-              {
-                "key": "",
-                "value": "",
-                "disabled": true
-              }
-            ],
+            "header": [],
             "url": {
               "raw": "{{baseUrl}}/api/v1/Customers/:userID",
               "host": [
@@ -118,25 +100,8 @@
               "variable": [
                 {
                   "key": "userID",
-                  "value": "2"
+                  "value": "1"
                 }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Health Check",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{baseUrl}}/health",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "health"
               ]
             }
           },
@@ -243,7 +208,15 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": ""
+              "raw": "{{baseUrl}}/api/v1/Products",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "Products"
+              ]
             }
           },
           "response": []
@@ -330,7 +303,7 @@
               "variable": [
                 {
                   "key": "productID",
-                  "value": ""
+                  "value": "1"
                 }
               ]
             }
@@ -356,7 +329,7 @@
               "variable": [
                 {
                   "key": "productID",
-                  "value": ""
+                  "value": "4"
                 }
               ]
             }
@@ -455,7 +428,7 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/api/v1/Orders/search?customerId&startDate&endDate",
+              "raw": "{{baseUrl}}/api/v1/Orders/search?customerId=1&startDate=&endDate=",
               "host": [
                 "{{baseUrl}}"
               ],
@@ -468,7 +441,7 @@
               "query": [
                 {
                   "key": "customerId",
-                  "value": ""
+                  "value": "1"
                 },
                 {
                   "key": "startDate",
@@ -478,6 +451,28 @@
                   "key": "endDate",
                   "value": ""
                 }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "System",
+      "item": [
+        {
+          "name": "Health Check",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/health",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "health"
               ]
             }
           },
